@@ -2,10 +2,10 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, links }) => (
   <header
     style={{
-      background: `rebeccapurple`,
+      background: `none`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -20,13 +20,22 @@ const Header = ({ siteTitle }) => (
         <Link
           to="/"
           style={{
-            color: `white`,
+            color: `black`,
             textDecoration: `none`,
           }}
         >
           {siteTitle}
         </Link>
       </h1>
+    </div>
+    <div className="headerLinks">
+      {links.map(link => (
+        <Link
+        to={`/${link}`}
+        >
+          {link}
+        </Link>
+      ))}
     </div>
   </header>
 )
