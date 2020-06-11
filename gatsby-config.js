@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Dylan Dislers`,
     description: `Welcome to my portfolio! I'm Dylan.`,
-    links: ['resume', 'github', 'linkedin', 'email'],
+    links: ["My work", "About me", "Contact me" ],
     author: `@dislersd`,
   },
   plugins: [
@@ -25,7 +25,14 @@ module.exports = {
         background_color: `#bad455`,
         theme_color: `#bad455`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/letterD.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
