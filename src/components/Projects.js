@@ -8,7 +8,7 @@ export default function Projects() {
       style={{
         width: "100%",
         height: "1000px",
-        backgroundColor: "salmon"
+        border: "2px solid blue"
       }}
       > Projects </div>
     </Section>

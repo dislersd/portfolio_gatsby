@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react"
+import LinkAnimated from "./LinkAnimated"
 
-export default function HeadOne({title}) {
+export default function HeadOne({ title, onClick }) {
   return (
-    <h1>
-      {title}
-    </h1>
+    <LinkAnimated onClick={onClick}>
+      <h1>{title}</h1>
+    </LinkAnimated>
   )
 }

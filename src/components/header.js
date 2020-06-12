@@ -4,6 +4,7 @@ import Headroom from "react-headroom"
 import styled from "styled-components"
 import { Flex } from "rebass"
 import { SectionLinks } from "react-scroll-section"
+import Fade from "react-reveal/Fade"
 
 import RouteLink from "../components/RouteLink"
 import HeadOne from "./HeadOne"
@@ -33,47 +34,44 @@ const formatLinks = allLinks =>
     { links: [], home: null }
   )
 
-const Header = ({ siteTitle, links }) => (
+const Header = ({ siteTitle }) => (
   <HeaderContainer>
-    <Flex
-      flexWrap="wrap"
-      justifyContent="space-between"
-      alignItems="center"
-      p={3}
-    >
-
-      <SectionLinks>
-        {({ allLinks }) => {
-          const { home, links } = formatLinks(allLinks);
-
-          const homeLink = home && (
+    <Fade top>
+      <Flex
+        flexWrap="wrap"
+        justifyContent="space-between"
+        alignItems="center"
+        p={3}
+      >
+        <SectionLinks>
+          {({ allLinks }) => {
+            const { home, links } = formatLinks(allLinks)
+            console.log('wtf', home)
+            const homeLink = home && (
               <HeadOne
                 title={siteTitle}
                 alt="Portfolio Logo"
                 onClick={home.onClick}
                 style={{
-                  cursor: 'pointer',
+                  cursor: "pointer",
                 }}
               />
-            );
+            )
 
-          const navLinks = links.map(({ name, value }) => (
-            <RouteLink
-              key={name}
-              onClick={value.onClick}
-              name={name}
-            />
-          ))
+            const navLinks = links.map(({ name, value }) => (
+              <RouteLink key={name} onClick={value.onClick} name={name} />
+            ))
 
-          return (
-            <Fragment>
-              {homeLink}
-              <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
-            </Fragment>
-          )
-        }}
-      </SectionLinks>
-    </Flex>
+            return (
+              <Fragment>
+                {homeLink}
+                <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
+              </Fragment>
+            )
+          }}
+        </SectionLinks>
+      </Flex>
+    </Fade>
   </HeaderContainer>
 )
 
