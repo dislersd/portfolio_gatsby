@@ -1,32 +1,80 @@
-import { Link } from "gatsby"
+import React, { Fragment } from "react"
 import PropTypes from "prop-types"
-import React from "react"
+import Headroom from "react-headroom"
+import styled from "styled-components"
+import { Flex } from "rebass"
+import { SectionLinks } from "react-scroll-section"
+
+import RouteLink from "../components/RouteLink"
+import HeadOne from "./HeadOne"
+
+const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
+
+const HeaderContainer = styled(Headroom)`
+  .headroom--pinned {
+    background: "red";
+  }
+`
+
+const formatLinks = allLinks =>
+  Object.entries(allLinks).reduce(
+    (acc, [key, value]) => {
+      const isHome = key === "home"
+      return isHome
+        ? {
+            ...acc,
+            home: value,
+          }
+        : {
+            ...acc,
+            links: [...acc.links, { name: capitalize(key), value }],
+          }
+    },
+    { links: [], home: null }
+  )
 
 const Header = ({ siteTitle, links }) => (
-  <header
-    style={{
-      background: `none`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <h1 style={{ margin: 0 }}>
-      <Link
-        to="/"
-        style={{
-          color: `black`,
-          textDecoration: `none`,
-        }}
-      >
-        {siteTitle}
-      </Link>
-    </h1>
+  <HeaderContainer>
+    <Flex
+      flexWrap="wrap"
+      justifyContent="space-between"
+      alignItems="center"
+      p={3}
+    >
 
-    <div className="header-links">
-      {links.map(link => (
-        <Link to={`/${link}`}>{link}</Link>
-      ))}
-    </div>
-  </header>
+      <SectionLinks>
+        {({ allLinks }) => {
+          const { home, links } = formatLinks(allLinks);
+
+          const homeLink = home && (
+              <HeadOne
+                title={siteTitle}
+                alt="Portfolio Logo"
+                onClick={home.onClick}
+                style={{
+                  cursor: 'pointer',
+                }}
+              />
+            );
+
+          const navLinks = links.map(({ name, value }) => (
+            <RouteLink
+              key={name}
+              onClick={value.onClick}
+              name={name}
+            />
+          ))
+
+          return (
+            <Fragment>
+              {homeLink}
+              <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
+            </Fragment>
+          )
+        }}
+      </SectionLinks>
+    </Flex>
+  </HeaderContainer>
 )
 
 Header.propTypes = {
