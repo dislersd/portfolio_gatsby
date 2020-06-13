@@ -8,7 +8,8 @@ export default function About() {
       style={{
         width: "100%",
         height: "1000px",
-        border: "2px solid black"
+        margin: "50px auto",
+        borderTop: "2px solid black"
       }}
       > About me </div>
     </Section>

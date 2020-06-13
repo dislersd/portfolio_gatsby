@@ -13,8 +13,12 @@ const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
 
 const HeaderContainer = styled(Headroom)`
   .headroom--pinned {
-    background: "red";
+    background: ${props => props.theme.colors.primaryDark},
   }
+  /* margin-top: 50px; */
+
+  position: sticky;
+  width: 100%;
 `
 
 const formatLinks = allLinks =>
@@ -34,19 +38,17 @@ const formatLinks = allLinks =>
     { links: [], home: null }
   )
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, links }) => (
   <HeaderContainer>
-    <Fade top>
       <Flex
         flexWrap="wrap"
         justifyContent="space-between"
         alignItems="center"
-        p={3}
       >
         <SectionLinks>
           {({ allLinks }) => {
             const { home, links } = formatLinks(allLinks)
-            console.log('wtf', home)
+
             const homeLink = home && (
               <HeadOne
                 title={siteTitle}
@@ -65,13 +67,12 @@ const Header = ({ siteTitle }) => (
             return (
               <Fragment>
                 {homeLink}
-                <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
+                <Flex>{navLinks}</Flex>
               </Fragment>
             )
           }}
         </SectionLinks>
       </Flex>
-    </Fade>
   </HeaderContainer>
 )
 

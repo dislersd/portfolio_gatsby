@@ -1,12 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import { ScrollingProvider } from "react-scroll-section"
 import config from "react-reveal/globals"
 
 import Header from "./Header"
 import "./global.css"
+import colors from "../../colors"
 
 const GlobalStyle = createGlobalStyle`
 
@@ -25,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     font-display: swap;
     font-display: fallback;
     overflow-x: hidden;
+    margin: 0 80px;
   }
 `
 
@@ -45,20 +47,22 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
+      <ThemeProvider theme={{ colors }}>
         <ScrollingProvider>
           <Header
             siteTitle={data.site.siteMetadata.title}
             links={data.site.siteMetadata.links}
           />
-          <div style={{ margin: "5rem" }}>
+          <div>
             <main>{children}</main>
             <footer>
-              © {new Date().getFullYear()}, Built with
+              © {new Date().getFullYear()}, Built with ❤️
               {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
+              <a href="https://www.gatsbyjs.org">Dylan Dislers</a>
             </footer>
           </div>
         </ScrollingProvider>
+      </ThemeProvider>
     </>
   )
 }

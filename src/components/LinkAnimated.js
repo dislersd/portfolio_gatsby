@@ -8,11 +8,11 @@ const LinkAnimated = styled.span`
   color: inherit;
   ${props =>
     props.selected &&
-    `border-bottom:  5px solid purple`};
+    `border-bottom:  5px solid ${props.theme.colors.primary}`};
   
   ${props =>
     props.secondary &&
-    `border-bottom:  5px solid purple`};
+    `border-bottom:  5px solid ${props.theme.colors.primary}`};
 
   transition: 0.4s;
   cursor: ${props => (props.onClick ? 'pointer' : 'default')};
@@ -23,10 +23,10 @@ const LinkAnimated = styled.span`
     right: 0;
     width: 0;
     bottom: -5px;
-    background: red;
+    background: ${props => props.theme.colors.background};
     ${props =>
     props.secondary &&
-    `background: red`};
+    `background: ${props.theme.colors.primaryDark}`};
     height: 5px;
     transition-property: width;
     transition-duration: 0.3s;

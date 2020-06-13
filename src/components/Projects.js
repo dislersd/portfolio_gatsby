@@ -7,8 +7,9 @@ export default function Projects() {
       <div
       style={{
         width: "100%",
+        margin: "50px auto",
         height: "1000px",
-        border: "2px solid blue"
+        borderTop: "2px solid blue"
       }}
       > Projects </div>
     </Section>
