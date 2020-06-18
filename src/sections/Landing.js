@@ -2,19 +2,12 @@ import React from "react"
 // import Dylan from "../images/Dylan.svg"
 import { Section } from "react-scroll-section"
 import styled from "styled-components"
-import Image from "./image"
+import Image from "../components/Image"
 import Fade from "react-reveal/Fade"
 
 const IntroStyle = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap&family=Roboto");
 
-  /* header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-} */
 
   h1 {
     font-family: "Roboto Mono", monospace;
@@ -25,11 +18,12 @@ const IntroStyle = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20rem;
+    padding: 200px 10% 0;
+
 
     @media (max-width: 1030px) {
       flex-direction: column;
     }
-
   }
 
   .intro-img {

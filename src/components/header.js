@@ -4,7 +4,6 @@ import Headroom from "react-headroom"
 import styled from "styled-components"
 import { Flex } from "rebass"
 import { SectionLinks } from "react-scroll-section"
-import Fade from "react-reveal/Fade"
 
 import RouteLink from "../components/RouteLink"
 import HeadOne from "./HeadOne"
@@ -13,11 +12,9 @@ const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
 
 const HeaderContainer = styled(Headroom)`
   .headroom--pinned {
-    background: ${props => props.theme.colors.primaryDark},
+    background-color: white;
   }
-  /* margin-top: 50px; */
-
-  position: sticky;
+  position: absolute;
   width: 100%;
 `
 
@@ -40,39 +37,37 @@ const formatLinks = allLinks =>
 
 const Header = ({ siteTitle, links }) => (
   <HeaderContainer>
-      <Flex
-        flexWrap="wrap"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <SectionLinks>
-          {({ allLinks }) => {
-            const { home, links } = formatLinks(allLinks)
+    <Flex
+      flexWrap="wrap"
+      justifyContent="space-between"
+      alignItems="center"
+      p={3}
+    >
+      <SectionLinks>
+        {({ allLinks }) => {
+          const { home, links } = formatLinks(allLinks)
 
-            const homeLink = home && (
-              <HeadOne
-                title={siteTitle}
-                alt="Portfolio Logo"
-                onClick={home.onClick}
-                style={{
-                  cursor: "pointer",
-                }}
-              />
-            )
+          const homeLink = home && (
+            <HeadOne
+              title={siteTitle}
+              alt="Portfolio Logo"
+              onClick={home.onClick}
+            />
+          )
 
-            const navLinks = links.map(({ name, value }) => (
-              <RouteLink key={name} onClick={value.onClick} name={name} />
-            ))
+          const navLinks = links.map(({ name, value }) => (
+            <RouteLink key={name} onClick={value.onClick} name={name} />
+          ))
 
-            return (
-              <Fragment>
-                {homeLink}
-                <Flex>{navLinks}</Flex>
-              </Fragment>
-            )
-          }}
-        </SectionLinks>
-      </Flex>
+          return (
+            <Fragment>
+              {homeLink}
+              <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
+            </Fragment>
+          )
+        }}
+      </SectionLinks>
+    </Flex>
   </HeaderContainer>
 )
 

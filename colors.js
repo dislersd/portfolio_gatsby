@@ -7,7 +7,7 @@ module.exports = {
   primaryDark: '#9287FF', // Right corner
   primaryLinkHover: '#9287FF',
 
-  secondary: '#9287FF', // left corner
+  secondary: '#000', // left corner
   secondaryLight: '#9287FF', // Bottom triangle
   secondaryDark: '#9287FF', // About Me text 
 };

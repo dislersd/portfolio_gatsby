@@ -1,8 +1,12 @@
+require('dotenv').config();
+
+const { ACCESS_TOKEN, SPACE_ID } = process.env;
+
 module.exports = {
   siteMetadata: {
     title: `Dylan Dislers`,
     description: `Welcome to my portfolio! I'm Dylan.`,
-    links: ["My work", "About me", "Contact me" ],
+    links: ["My work", "About me", "Contact me"],
     author: `@dislersd`,
   },
   plugins: [
@@ -29,10 +33,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: SPACE_ID,
+        accessToken: ACCESS_TOKEN,
+      },
+    },
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
-        rule: {
-        },
+        rule: {},
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
