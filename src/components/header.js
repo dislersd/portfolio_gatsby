@@ -11,11 +11,50 @@ import HeadOne from "./HeadOne"
 const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
 
 const HeaderContainer = styled(Headroom)`
+  .headroom {
+    padding: 0 100px;
+  }
+
   .headroom--pinned {
     background-color: white;
   }
   position: absolute;
   width: 100%;
+
+  h1 {
+    white-space: nowrap;
+  }
+
+  .section-links {
+    border: 2px solid green;
+    @media (max-width: 400px) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  span {
+    white-space: nowrap;
+  }
+
+  div div {
+    margin: 10px;
+    @media (max-width: 845px) {
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  div div div div div {
+    border: 2px solid green;
+    @media (max-width: 845px) {
+      margin: 10 5;
+    }
+  }
 `
 
 const formatLinks = allLinks =>
@@ -43,7 +82,7 @@ const Header = ({ siteTitle, links }) => (
       alignItems="center"
       p={3}
     >
-      <SectionLinks>
+      <SectionLinks className="section-links">
         {({ allLinks }) => {
           const { home, links } = formatLinks(allLinks)
 
@@ -56,7 +95,9 @@ const Header = ({ siteTitle, links }) => (
           )
 
           const navLinks = links.map(({ name, value }) => (
-            <RouteLink key={name} onClick={value.onClick} name={name} />
+            <Flex m={30}>
+              <RouteLink key={name} onClick={value.onClick} name={name} />
+            </Flex>
           ))
 
           return (

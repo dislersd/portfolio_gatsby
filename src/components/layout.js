@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { ScrollingProvider } from "react-scroll-section"
 import config from "react-reveal/globals"
 
@@ -25,10 +25,6 @@ const GlobalStyle = createGlobalStyle`
     font-display: fallback;
     overflow-x: hidden;
   }
-`
-
-const MainContainer = styled.div`
-  margin: 50px;
 `
 
 config({ ssrFadeout: true })

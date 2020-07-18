@@ -1,6 +1,6 @@
-require('dotenv').config();
+require("dotenv").config()
 
-const { ACCESS_TOKEN, SPACE_ID } = process.env;
+const { ACCESS_TOKEN, SPACE_ID } = process.env
 
 module.exports = {
   siteMetadata: {
@@ -43,6 +43,15 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {},
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Roboto Mono`, // you can also specify font weights and styles
+        ],
+        display: "swap",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

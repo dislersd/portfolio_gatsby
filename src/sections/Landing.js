@@ -6,7 +6,7 @@ import Image from "../components/Image"
 import Fade from "react-reveal/Fade"
 
 const IntroStyle = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap&family=Roboto");
+  @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono=swap&family=Roboto");
 
 
   h1 {
@@ -46,12 +46,12 @@ const IntroStyle = styled.div`
   }
 
   .intro-header {
-    font-size: 3.2rem;
-    font-family: "Roboto Mono", monospace;
+    font-size: 3rem;
+    font-family: "Roboto Mono", Arial, Helvetica, sans-serif;
   }
 
   .intro-body {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 2.2rem;
     font-family: "Roboto Mono", monospace;
   }
